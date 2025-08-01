@@ -1,0 +1,51 @@
+:host {
+  width: 100%;
+}
+
+#front-page {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  align-items: flex-start;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+#front-page.vertical {
+  flex-direction: column-reverse;
+  flex-wrap: nowrap;
+}
+
+#front-page > div {
+  height: calc(100vh - 75px);
+  flex: 1 1 50%;
+  min-width: 180px;
+  box-sizing: border-box;
+  border-radius: var(--border-radius);
+}
+
+#front-page.vertical > div {
+  width: 100%;
+}
+
+#art {
+  padding: 10px;
+  background-color: light-dark(var(--primary-dark), var(--primary-light));
+}
+
+#front-page.vertical #art {
+  flex: 0 0 calc(45vh - 75px);
+}
+
+#login,
+#register {
+  word-wrap: break-word;
+  text-align: center;
+  padding-left: 10px;
+}
+
+#front-page.vertical #login,
+#front-page.vertical #register {
+  flex: 0 0 55vh;
+  padding: 0px;
+}

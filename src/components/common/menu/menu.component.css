@@ -1,0 +1,35 @@
+#menu-modal {
+  z-index: var(--modal-z-index);
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}
+
+#menu-dropdown {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+  padding: 8px 0px;
+  background-color: light-dark(var(--primary-dark), var(--primary-light));
+  border-radius: var(--border-radius);
+  box-shadow:
+    rgba(0, 0, 0, 0.16) 0px 3px 6px,
+    rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.menu-item {
+  cursor: pointer;
+  border: 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 5px;
+  text-align: left;
+  background-color: inherit;
+  font-size: medium;
+}
+
+.menu-item:hover {
+  background-color: light-dark(var(--primary-darker), var(--primary-lighter));
+}

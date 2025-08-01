@@ -1,0 +1,23 @@
+:host {
+  width: 100%;
+}
+
+footer {
+  background-color: var(--primary-dark);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.footer-section {
+  text-align: left;
+  flex: 1 1 auto;
+  max-width: 240px;
+  min-width: 200px;
+}
+
+#hidden-message {
+  color: var(--primary-dark);
+}
