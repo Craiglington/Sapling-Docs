@@ -1,6 +1,6 @@
 import { RouterService } from "@craiglington/sapling";
 import { PrivacyComponent } from "../components/routes/privacy/privacy.component";
-import { LoginComponent } from "../components/routes/login/login.component";
+import { HomeComponent } from "../components/routes/home/home.component";
 
 RouterService.init({
   routes: [
@@ -9,14 +9,14 @@ RouterService.init({
       component: PrivacyComponent
     },
     {
-      path: new RegExp(/^\/login$/),
-      component: LoginComponent
+      path: new RegExp(/^\/$/),
+      component: HomeComponent
     },
 
     // This route must remain last!
     {
       path: new RegExp(/^.*$/),
-      redirectTo: "/login"
+      redirectTo: "/"
     }
   ]
 });

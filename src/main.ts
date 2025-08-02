@@ -7,6 +7,6 @@ import "./components/common/menu/menu.component";
 import "./components/footer/footer.component";
 import "./components/header/header.component";
 import "./components/routes/privacy/privacy.component";
-import "./components/routes/login/login.component";
+import "./components/routes/home/home.component";
 
 import "./config/router";
