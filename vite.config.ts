@@ -1,4 +1,5 @@
 import { defineConfig } from "vite";
+import fs from "fs";
 
 export default defineConfig({
   publicDir: "assets",
@@ -7,6 +8,10 @@ export default defineConfig({
     port: 4200,
     strictPort: true,
     open: false,
+    https: {
+      key: fs.readFileSync("certs/server.key"),
+      cert: fs.readFileSync("certs/server.crt")
+    }
   },
   envDir: "src/envs"
 });
