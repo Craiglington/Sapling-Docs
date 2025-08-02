@@ -1,3 +1,17 @@
+@font-face {
+  font-family: "Raleway";
+  src: url("/fonts/Raleway-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("/fonts/Raleway-Italic-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: italic;
+}
+
 /* THEME */
 :root {
   color-scheme: dark;
@@ -9,15 +23,15 @@
   --primary-darker: #090d10;
   --primary-darkest: #010508;
 
-  --secondary-lightest: #f9fafa;
-  --secondary-lighter: #f1f2f2;
-  --secondary-light: #e9eaea;
-  --secondary: #e1e2e2;
-  --secondary-dark: #d9dada;
-  --secondary-darker: #d1d2d2;
-  --secondary-darkest: #c9caca;
+  --secondary-lightest: #d5ffee;
+  --secondary-lighter: #cdffe6;
+  --secondary-light: #c5ffde;
+  --secondary: #bdffd6;
+  --secondary-dark: #b5f7ce;
+  --secondary-darker: #adefc6;
+  --secondary-darkest: #a5e7be;
 
-  --font-family: "Cormorant Garamond", serif;
+  --font-family: "Raleway", serif;
   --font-weight: 400;
 
   --border-radius: 5px;
@@ -27,13 +41,14 @@
 
 :root.light {
   color-scheme: light;
-  --primary-lightest: #f9fafa;
-  --primary-lighter: #f1f2f2;
-  --primary-light: #e9eaea;
-  --primary: #e1e2e2;
-  --primary-dark: #d9dada;
-  --primary-darker: #d1d2d2;
-  --primary-darkest: #c9caca;
+
+  --primary-lightest: #d5ffee;
+  --primary-lighter: #cdffe6;
+  --primary-light: #c5ffde;
+  --primary: #bdffd6;
+  --primary-dark: #b5f7ce;
+  --primary-darker: #adefc6;
+  --primary-darkest: #a5e7be;
 
   --secondary-lightest: #313538;
   --secondary-lighter: #292d30;
