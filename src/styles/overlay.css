@@ -1,0 +1,12 @@
+.show-overlay {
+  animation: show-overlay 100ms linear 1 forwards;
+  opacity: 0;
+  transform: scale(0.75);
+}
+
+@keyframes show-overlay {
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
