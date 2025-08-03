@@ -1,7 +1,7 @@
 export class Constants {
   public static readonly TITLE = "Sapling";
   public static readonly EMOJI_ICON = "🌱";
-  public static readonly SLOGAN = "A Simple Front-End Framework";
+  public static readonly SLOGAN = "A Simple Front-End Library";
   public static readonly SUPPORT_EMAIL = "craiglington@gmail.com";
   public static readonly NPM_URL =
     "https://www.npmjs.com/package/@craiglington/sapling";

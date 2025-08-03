@@ -80,15 +80,9 @@ button {
   color: var(--secondary);
   font-family: var(--font-family);
   font-weight: var(--font-weight);
-}
-
-.icon-button {
   cursor: pointer;
-  border-radius: 50%;
-  border: 0;
-  padding: 10px;
   box-sizing: border-box;
-  background-color: inherit;
+  padding: 1em;
 }
 
 .hidden {
@@ -107,4 +101,43 @@ main#app-main {
   justify-content: flex-start;
   align-items: center;
   flex-wrap: nowrap;
+}
+
+.icon-button {
+  border-radius: 50%;
+  border: none;
+  background-color: inherit;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+}
+
+.icon-button:hover {
+  background-color: light-dark(var(--primary-darkest), var(--primary-light));
+}
+
+.outlined-button {
+  border-radius: 9999px;
+  background-color: var(--primary);
+  outline: none;
+  border: solid 1px var(--secondary);
+}
+
+.outlined-button:hover {
+  background-color: light-dark(var(--primary-darker), var(--primary-lighter));
+}
+
+.filled-button {
+  border-radius: 9999px;
+  background-color: var(--secondary);
+  color: var(--primary);
+  outline: none;
+  border: none;
+}
+
+.filled-button:hover {
+  background-color: light-dark(
+    var(--secondary-lightest),
+    var(--secondary-darkest)
+  );
 }
