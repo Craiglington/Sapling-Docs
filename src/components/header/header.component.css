@@ -2,13 +2,21 @@ header {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  gap: 2px;
   background-color: var(--primary-dark);
   box-sizing: border-box;
   padding: 5px;
   border-bottom: 1px solid var(--primary-darkest);
 }
 
+.icon-button {
+  width: 44px;
+  height: 44px;
+}
+
 .icon-button:hover {
   background-color: light-dark(var(--primary-darkest), var(--primary-light));
+}
+
+#home-button {
+  font-size: large;
 }

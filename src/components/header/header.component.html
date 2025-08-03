@@ -1,23 +1,27 @@
-<app-menu id="menu">
-  <button class="menu-item">Account Details</button>
-  <button class="menu-item">Contact Us</button>
-  <button class="menu-item">Logout</button>
-</app-menu>
-
 <header>
   <button id="menu-button" class="icon-button">
     <app-icon></app-icon>
   </button>
-  <button id="home-button" class="icon-button">
-    <app-icon></app-icon>
-  </button>
+  <app-tooltip id="menu-tooltip"></app-tooltip>
+  <app-menu id="menu">
+    <button>Account Details</button>
+    <button>Contact Us</button>
+    <button>Logout</button>
+  </app-menu>
+
+  <button id="home-button" class="icon-button"></button>
+  <app-tooltip id="home-tooltip"></app-tooltip>
+
   <button id="search-button" class="icon-button">
     <app-icon></app-icon>
   </button>
-  <span id="title"></span>
+  <app-tooltip id="search-tooltip"></app-tooltip>
+
   <span class="spacer"></span>
+
   <button id="theme-button" class="icon-button">
     <app-icon id="light"></app-icon>
     <app-icon id="dark"></app-icon>
   </button>
+  <app-tooltip id="theme-tooltip"></app-tooltip>
 </header>

@@ -6,7 +6,7 @@ import overlayStyles from "./../../../styles/overlay.css?raw";
 import { OverlayService } from "../../../services/overlay.service";
 
 export class MenuComponent extends Component {
-  private _target?: Element;
+  private _target?: HTMLElement;
   private menuDropdown?: HTMLDivElement;
   private _visible = new Value(false);
 
@@ -34,7 +34,7 @@ export class MenuComponent extends Component {
     }
   }
 
-  set target(target: Element | undefined) {
+  set target(target: HTMLElement | undefined) {
     this._target = target;
   }
 
