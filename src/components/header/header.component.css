@@ -11,3 +11,7 @@ header {
 #home-button {
   font-size: large;
 }
+
+#dropdown-menu button:nth-of-type(n + 2) {
+  font-size: small;
+}

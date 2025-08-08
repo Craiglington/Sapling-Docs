@@ -1,12 +1,12 @@
 import { RouterService } from "@craiglington/sapling";
-import { PrivacyComponent } from "../components/routes/privacy/privacy.component";
+import { DocsComponent } from "../components/routes/docs/docs.component";
 import { HomeComponent } from "../components/routes/home/home.component";
 
 RouterService.init({
   routes: [
     {
-      path: new RegExp(/^\/privacy$/),
-      component: PrivacyComponent
+      path: new RegExp(/^\/docs$/),
+      component: DocsComponent
     },
     {
       path: new RegExp(/^\/$/),

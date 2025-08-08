@@ -1,4 +1,10 @@
-import { Component, Value } from "@craiglington/sapling";
+import {
+  Component,
+  Subject,
+  Value,
+  type Subscriber,
+  type Subscription
+} from "@craiglington/sapling";
 
 import menuTemplate from "./menu.component.html?raw";
 import menuStyles from "./menu.component.css?raw";
@@ -9,6 +15,7 @@ export class MenuComponent extends Component {
   private _target?: HTMLElement;
   private menuDropdown?: HTMLDivElement;
   private _visible = new Value(false);
+  private loaded = new Subject(false);
 
   constructor() {
     super({
@@ -32,6 +39,8 @@ export class MenuComponent extends Component {
     if (this.menuDropdown) {
       this._visible.bindElementClass(this.menuDropdown, "show-overlay");
     }
+
+    this.loaded.emit(true);
   }
 
   set target(target: HTMLElement | undefined) {
@@ -47,6 +56,10 @@ export class MenuComponent extends Component {
     if (visible && this._target && this.menuDropdown) {
       OverlayService.positionOverlay(this._target, this.menuDropdown);
     }
+  }
+
+  addOnLoad(subscriber: Subscriber<boolean>): Subscription {
+    return this.loaded.subscribe(subscriber);
   }
 }
 

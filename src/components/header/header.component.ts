@@ -1,11 +1,11 @@
-import headerTemplate from "./header.component.html?raw";
-import headerStyles from "./header.component.css?raw";
-import { Component, Value } from "@craiglington/sapling";
-import { AppState, type Theme } from "../../config/state";
+import { Component, RouterService, Value } from "@craiglington/sapling";
 import { Constants } from "../../config/constants";
-import type { MenuComponent } from "../common/menu/menu.component";
+import { AppState, type Theme } from "../../config/state";
 import type { IconComponent } from "../common/icon/icon.component";
+import type { MenuComponent } from "../common/menu/menu.component";
 import { TooltipComponent } from "../common/tooltip/tooltip.component";
+import headerStyles from "./header.component.css?raw";
+import headerTemplate from "./header.component.html?raw";
 
 export class HeaderComponent extends Component {
   theme: Value<Theme> = new Value("dark");
@@ -25,22 +25,30 @@ export class HeaderComponent extends Component {
   override async connectedCallback() {
     await super.connectedCallback();
 
-    const menu = this.getChild<MenuComponent>("#menu");
-
     const menuButton = this.getChild<HTMLButtonElement>("#menu-button");
     if (menuButton) {
+      // Set dropdown menu
+      const dropdownMenu = this.getChild<MenuComponent>("#dropdown-menu");
+      if (dropdownMenu) {
+        dropdownMenu.target = menuButton;
+        dropdownMenu.addOnLoad((value) => {
+          if (!value) return;
+          this.setMenuButtonActions();
+        });
+
+        // Set click listener
+        menuButton.addEventListener("click", () => {
+          dropdownMenu.visible = true;
+        });
+      }
+
+      // Set icon
       const icon = menuButton.querySelector<IconComponent>("app-icon");
       if (icon) {
-        icon.setIcon("menu");
+        icon.icon = "menu";
       }
-      if (menu) {
-        menu.target = menuButton;
-      }
-      menuButton.addEventListener("click", () => {
-        if (menu) {
-          menu.visible = true;
-        }
-      });
+
+      // Set tooltip
       const menuTooltip = this.getChild<TooltipComponent>("#menu-tooltip");
       if (menuTooltip) {
         menuTooltip.target = menuButton;
@@ -50,7 +58,15 @@ export class HeaderComponent extends Component {
 
     const homeButton = this.getChild<HTMLButtonElement>("#home-button");
     if (homeButton) {
+      // Set click listener
+      homeButton.addEventListener("click", () => {
+        RouterService.route("/");
+      });
+
+      // Set icon
       this.appEmojiIcon.bindElementProperty(homeButton, "innerHTML");
+
+      // Set tooltip
       const homeTooltip = this.getChild<TooltipComponent>("#home-tooltip");
       if (homeTooltip) {
         homeTooltip.target = homeButton;
@@ -60,10 +76,15 @@ export class HeaderComponent extends Component {
 
     const searchButton = this.getChild<HTMLButtonElement>("#search-button");
     if (searchButton) {
+      // Set click listener
+
+      // Set icon
       const icon = searchButton.querySelector<IconComponent>("app-icon");
       if (icon) {
-        icon.setIcon("search");
+        icon.icon = "search";
       }
+
+      // Set tooltip
       const searchTooltip = this.getChild<TooltipComponent>("#search-tooltip");
       if (searchTooltip) {
         searchTooltip.target = searchButton;
@@ -73,39 +94,40 @@ export class HeaderComponent extends Component {
 
     const themeButton = this.getChild<HTMLButtonElement>("#theme-button");
     if (themeButton) {
-      const themeTooltip = this.getChild<TooltipComponent>("#theme-tooltip");
-      if (themeTooltip) {
-        themeTooltip.target = themeButton;
-        this.theme.bindElementProperty(themeTooltip, "tooltipText", (theme) =>
-          theme === "dark" ? "Light Mode" : "Dark Mode"
-        );
-      }
-      const lightIcon =
-        themeButton.querySelector<IconComponent>("app-icon#light");
-      if (lightIcon) {
-        lightIcon.setIcon("light_mode");
-        this.theme.bindElementClass(
-          lightIcon,
-          "hidden",
-          (value) => value === "light"
-        );
-      }
-
-      const darkIcon =
-        themeButton.querySelector<IconComponent>("app-icon#dark");
-      if (darkIcon) {
-        darkIcon.setIcon("dark_mode");
-        this.theme.bindElementClass(
-          darkIcon,
-          "hidden",
-          (value) => value === "dark"
-        );
-      }
-
+      // Set click listener
       themeButton.addEventListener("click", () => {
         AppState.dispatch("theme", (theme) =>
           theme === "dark" ? "light" : "dark"
         );
+      });
+
+      // Set icon
+      const icon = themeButton.querySelector<IconComponent>("app-icon");
+      if (icon) {
+        this.theme.bindElementPropertyWith(icon, "icon", (theme) =>
+          theme === "dark" ? "light_mode" : "dark_mode"
+        );
+      }
+
+      // Set tooltip
+      const themeTooltip = this.getChild<TooltipComponent>("#theme-tooltip");
+      if (themeTooltip) {
+        themeTooltip.target = themeButton;
+        this.theme.bindElementPropertyWith(
+          themeTooltip,
+          "tooltipText",
+          (theme) => (theme === "dark" ? "Light Mode" : "Dark Mode")
+        );
+      }
+    }
+  }
+
+  private setMenuButtonActions() {
+    const viewDocumentationButton =
+      this.getChild<HTMLButtonElement>("#getting-started");
+    if (viewDocumentationButton) {
+      viewDocumentationButton.addEventListener("click", () => {
+        RouterService.route("/docs");
       });
     }
   }

@@ -1,6 +1,6 @@
 import homeTemplate from "./home.component.html?raw";
 import homeStyles from "./home.component.css?raw";
-import { Component, Value } from "@craiglington/sapling";
+import { Component, RouterService, Value } from "@craiglington/sapling";
 import { AppState, type Layout } from "../../../config/state";
 import { Constants } from "../../../config/constants";
 
@@ -46,12 +46,11 @@ export class HomeComponent extends Component {
       );
     }
 
-    const infoElement = this.getChild<HTMLParagraphElement>("#info");
-    if (infoElement) {
-    }
-
-    const artElement = this.getChild<HTMLParagraphElement>("#art");
-    if (artElement) {
+    const getStartedButton = this.getChild<HTMLButtonElement>("#get-started");
+    if (getStartedButton) {
+      getStartedButton.addEventListener("click", () => {
+        RouterService.route("/docs");
+      });
     }
   }
 }
