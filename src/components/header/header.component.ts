@@ -52,7 +52,6 @@ export class HeaderComponent extends Component {
       const menuTooltip = this.getChild<TooltipComponent>("#menu-tooltip");
       if (menuTooltip) {
         menuTooltip.target = menuButton;
-        menuTooltip.tooltipText = "Menu";
       }
     }
 
@@ -70,7 +69,6 @@ export class HeaderComponent extends Component {
       const homeTooltip = this.getChild<TooltipComponent>("#home-tooltip");
       if (homeTooltip) {
         homeTooltip.target = homeButton;
-        homeTooltip.tooltipText = "Home";
       }
     }
 
@@ -88,7 +86,6 @@ export class HeaderComponent extends Component {
       const searchTooltip = this.getChild<TooltipComponent>("#search-tooltip");
       if (searchTooltip) {
         searchTooltip.target = searchButton;
-        searchTooltip.tooltipText = "Search";
       }
     }
 
@@ -113,10 +110,8 @@ export class HeaderComponent extends Component {
       const themeTooltip = this.getChild<TooltipComponent>("#theme-tooltip");
       if (themeTooltip) {
         themeTooltip.target = themeButton;
-        this.theme.bindElementPropertyWith(
-          themeTooltip,
-          "tooltipText",
-          (theme) => (theme === "dark" ? "Light Mode" : "Dark Mode")
+        this.theme.bindElementPropertyWith(themeTooltip, "tooltip", (theme) =>
+          theme === "dark" ? "Light Mode" : "Dark Mode"
         );
       }
     }
