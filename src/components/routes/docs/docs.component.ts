@@ -7,6 +7,7 @@ import docsStyles from "./docs.component.css?raw";
 export class DocsComponent extends Component {
   appTitle = new Value(Constants.TITLE);
   clientURL = new Value(`https://${import.meta.env.VITE_CLIENT_URL}`);
+  docsURL = new Value(Constants.DOCS_URL);
 
   constructor() {
     super({
@@ -19,11 +20,14 @@ export class DocsComponent extends Component {
     await super.connectedCallback();
 
     const titles = this.getChildren(".app-title");
-    if (titles) {
-      titles.forEach((title) => {
-        this.appTitle.bindElementProperty(title, "innerHTML");
-      });
-    }
+    titles?.forEach((title) => {
+      this.appTitle.bindElementProperty(title, "innerHTML");
+    });
+
+    const docsLinks = this.getChildren<HTMLAnchorElement>(".docs-link");
+    docsLinks?.forEach((link) => {
+      this.docsURL.bindElementProperty(link, "href");
+    });
   }
 }
 

@@ -3,3 +3,7 @@
   padding: 5px 15px;
   width: 100%;
 }
+
+ul {
+  line-height: 1.5em;
+}
