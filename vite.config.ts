@@ -1,7 +1,13 @@
 import { defineConfig } from "vite";
 import fs from "fs";
+import checker from "vite-plugin-checker";
 
 export default defineConfig({
+  plugins: [
+    checker({
+      typescript: true
+    })
+  ],
   publicDir: "assets",
   server: {
     host: "127.0.0.1",
