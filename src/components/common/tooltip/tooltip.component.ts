@@ -8,13 +8,14 @@ import { OverlayService } from "../../../services/overlay.service";
 export class TooltipComponent extends Component {
   private _target?: HTMLElement;
   private _visible = new Value(false);
-  private tooltip?: HTMLDivElement;
-  private _tooltipText = new Value("");
+  private tooltipElement?: HTMLDivElement;
+  private _tooltip = new Value("");
 
   constructor() {
     super({
       template: tooltipTemplate,
-      styles: [overlayStyles, tooltipStyles]
+      styles: [overlayStyles, tooltipStyles],
+      insertSelector: "#tooltip"
     });
   }
 
@@ -23,10 +24,16 @@ export class TooltipComponent extends Component {
 
     this._visible.bindElementClass(this, "hidden", (value) => !value);
 
-    this.tooltip = this.getChild<HTMLDivElement>("#tooltip") || undefined;
-    if (this.tooltip) {
-      this._tooltipText.bindElementProperty(this.tooltip, "innerText");
-      this._visible.bindElementClass(this.tooltip, "show-overlay");
+    this.tooltipElement =
+      this.getChild<HTMLDivElement>("#tooltip") || undefined;
+    if (this.tooltipElement) {
+      // Use existing innerText if any
+      if (this.tooltipElement.innerText) {
+        this._tooltip.value = this.tooltipElement.innerText;
+      }
+
+      this._tooltip.bindElementProperty(this.tooltipElement, "innerText");
+      this._visible.bindElementClass(this.tooltipElement, "show-overlay");
     }
   }
 
@@ -53,18 +60,18 @@ export class TooltipComponent extends Component {
     return this._visible.value;
   }
 
-  get tooltipText() {
-    return this._tooltipText.value;
+  get tooltip() {
+    return this._tooltip.value;
   }
 
-  set tooltipText(text: string) {
-    this._tooltipText.value = text;
+  set tooltip(text: string) {
+    this._tooltip.value = text;
   }
 
   private mouseEnterListener() {
     this._visible.value = true;
-    if (this._target && this.tooltip) {
-      OverlayService.positionOverlay(this._target, this.tooltip);
+    if (this._target && this.tooltipElement) {
+      OverlayService.positionOverlay(this._target, this.tooltipElement);
     }
   }
 
