@@ -6,6 +6,7 @@ import "./components/common/divider/divider.component";
 import "./components/common/menu/menu.component";
 import "./components/common/tooltip/tooltip.component";
 import "./components/common/code-snippet/code-snippet.component";
+import "./components/common/side-nav/side-nav.component";
 import "./components/footer/footer.component";
 import "./components/header/header.component";
 import "./components/routes/docs/docs.component";
