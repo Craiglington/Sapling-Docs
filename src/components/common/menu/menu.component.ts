@@ -15,7 +15,7 @@ export class MenuComponent extends Component {
   private _target?: HTMLElement;
   private menuDropdown?: HTMLDivElement;
   private _visible = new Value(false);
-  private loaded = new Subject(false);
+  private _loadingComplete = new Subject(false);
 
   constructor() {
     super({
@@ -40,7 +40,7 @@ export class MenuComponent extends Component {
       this._visible.bindElementClass(this.menuDropdown, "show-overlay");
     }
 
-    this.loaded.emit(true);
+    this._loadingComplete.emit(true);
   }
 
   set target(target: HTMLElement | undefined) {
@@ -58,8 +58,8 @@ export class MenuComponent extends Component {
     }
   }
 
-  addOnLoad(subscriber: Subscriber<boolean>): Subscription {
-    return this.loaded.subscribe(subscriber);
+  loadingComplete(subscriber: Subscriber<boolean>): Subscription {
+    return this._loadingComplete.subscribe(subscriber);
   }
 }
 

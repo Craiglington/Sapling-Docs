@@ -5,7 +5,7 @@ header {
   background-color: var(--primary-dark);
   box-sizing: border-box;
   padding: 5px;
-  border-bottom: 1px solid var(--primary-darkest);
+  border-bottom: 1px solid var(--primary-darker);
 }
 
 #home-button {

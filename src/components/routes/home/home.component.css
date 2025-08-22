@@ -1,7 +1,3 @@
-:host {
-  width: 100%;
-}
-
 #home-page {
   height: calc(100dvh - 55px);
   display: flex;

@@ -11,10 +11,12 @@ export const AppState = new State<{
   theme: Theme;
   mobile: boolean;
   layout: Layout;
+  showNav: boolean;
 }>({
   theme: theme,
   mobile: false,
-  layout: "horizontal"
+  layout: "horizontal",
+  showNav: false
 });
 
 AppState.subscribe("theme", (theme) => {

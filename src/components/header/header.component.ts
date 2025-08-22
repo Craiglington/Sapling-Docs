@@ -2,7 +2,6 @@ import { Component, RouterService, Value } from "@craiglington/sapling";
 import { Constants } from "../../config/constants";
 import { AppState, type Theme } from "../../config/state";
 import type { IconComponent } from "../common/icon/icon.component";
-import type { MenuComponent } from "../common/menu/menu.component";
 import { TooltipComponent } from "../common/tooltip/tooltip.component";
 import headerStyles from "./header.component.css?raw";
 import headerTemplate from "./header.component.html?raw";
@@ -27,20 +26,10 @@ export class HeaderComponent extends Component {
 
     const menuButton = this.getChild<HTMLButtonElement>("#menu-button");
     if (menuButton) {
-      // Set dropdown menu
-      const dropdownMenu = this.getChild<MenuComponent>("#dropdown-menu");
-      if (dropdownMenu) {
-        dropdownMenu.target = menuButton;
-        dropdownMenu.addOnLoad((value) => {
-          if (!value) return;
-          this.setMenuButtonActions();
-        });
-
-        // Set click listener
-        menuButton.addEventListener("click", () => {
-          dropdownMenu.visible = true;
-        });
-      }
+      // Set click listener
+      menuButton.addEventListener("click", () => {
+        AppState.dispatch("showNav", (value) => !value);
+      });
 
       // Set icon
       const icon = menuButton.querySelector<IconComponent>("app-icon");
@@ -114,16 +103,6 @@ export class HeaderComponent extends Component {
           theme === "dark" ? "Light Mode" : "Dark Mode"
         );
       }
-    }
-  }
-
-  private setMenuButtonActions() {
-    const viewDocumentationButton =
-      this.getChild<HTMLButtonElement>("#getting-started");
-    if (viewDocumentationButton) {
-      viewDocumentationButton.addEventListener("click", () => {
-        RouterService.route("/docs");
-      });
     }
   }
 }

@@ -16,6 +16,8 @@ footer {
   flex: 1 1 auto;
   max-width: 240px;
   min-width: 200px;
+  box-sizing: border-box;
+  padding: 0 10px;
 }
 
 #hidden-message {

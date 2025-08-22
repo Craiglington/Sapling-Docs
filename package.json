@@ -16,6 +16,6 @@
     "vite-plugin-checker": "^0.10.2"
   },
   "dependencies": {
-    "@craiglington/sapling": "^1.0.5"
+    "@craiglington/sapling": "^1.0.6"
   }
 }

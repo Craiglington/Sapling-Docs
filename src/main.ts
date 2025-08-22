@@ -11,5 +11,4 @@ import "./components/footer/footer.component";
 import "./components/header/header.component";
 import "./components/routes/docs/docs.component";
 import "./components/routes/home/home.component";
-
-import "./config/router";
+import "./components/main/main.component";
