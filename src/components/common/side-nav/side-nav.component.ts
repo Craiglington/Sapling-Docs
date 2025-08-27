@@ -16,9 +16,7 @@ export class SideNavComponent extends Component {
   constructor() {
     super({
       template: template,
-      styles: [styles],
-      attachShadowRoot: false,
-      insertSelector: ""
+      styles: [styles]
     });
   }
 

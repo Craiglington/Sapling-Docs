@@ -9,28 +9,9 @@
 
 #app-main {
   overflow: auto;
-}
-
-app-side-nav {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   flex-wrap: nowrap;
-}
-
-.side-nav > :nth-child(n) {
-  cursor: pointer;
-  border: 0;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 10px;
-  padding-left: 20px;
-  text-align: left;
-  background-color: inherit;
-  font-size: medium;
-}
-
-.side-nav > :nth-child(n):hover {
-  background-color: light-dark(var(--primary-darker), var(--primary-lighter));
 }

@@ -8,14 +8,12 @@ import { OverlayService } from "../../../services/overlay.service";
 export class TooltipComponent extends Component {
   private _target?: HTMLElement;
   private _visible = new Value(false);
-  private tooltipElement?: HTMLDivElement;
-  private _tooltip = new Value("");
+  private tooltipElement?: HTMLSlotElement;
 
   constructor() {
     super({
       template: tooltipTemplate,
-      styles: [overlayStyles, tooltipStyles],
-      insertSelector: "#tooltip"
+      styles: [overlayStyles, tooltipStyles]
     });
   }
 
@@ -25,14 +23,8 @@ export class TooltipComponent extends Component {
     this._visible.bindElementClass(this, "hidden", (value) => !value);
 
     this.tooltipElement =
-      this.getChild<HTMLDivElement>("#tooltip") || undefined;
+      this.getChild<HTMLSlotElement>("#tooltip") || undefined;
     if (this.tooltipElement) {
-      // Use existing innerText if any
-      if (this.tooltipElement.innerText) {
-        this._tooltip.value = this.tooltipElement.innerText;
-      }
-
-      this._tooltip.bindElementProperty(this.tooltipElement, "innerText");
       this._visible.bindElementClass(this.tooltipElement, "show-overlay");
     }
   }
@@ -61,11 +53,11 @@ export class TooltipComponent extends Component {
   }
 
   get tooltip() {
-    return this._tooltip.value;
+    return this.innerText;
   }
 
   set tooltip(text: string) {
-    this._tooltip.value = text;
+    this.innerText = text;
   }
 
   private mouseEnterListener() {

@@ -1,13 +1,13 @@
-app-menu {
+:host {
   z-index: var(--modal-z-index);
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100dvw;
   height: 100dvh;
 }
 
-.menu-dropdown {
+#menu-dropdown {
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -19,19 +19,4 @@ app-menu {
   box-shadow:
     rgba(0, 0, 0, 0.16) 0px 3px 6px,
     rgba(0, 0, 0, 0.23) 0px 3px 6px;
-}
-
-.menu-dropdown > :nth-child(n) {
-  cursor: pointer;
-  border: 0;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 10px;
-  text-align: left;
-  background-color: inherit;
-  font-size: medium;
-}
-
-.menu-dropdown > :nth-child(n):hover {
-  background-color: light-dark(var(--primary-darker), var(--primary-lighter));
 }

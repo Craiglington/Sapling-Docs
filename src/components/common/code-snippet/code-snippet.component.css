@@ -1,13 +1,8 @@
-:host {
-  display: inline-block;
-}
-
 #code-snippet {
-  display: inline-block;
+  display: inline;
   background-color: light-dark(var(--primary-darker), var(--primary-lighter));
   padding: 0.25em 0.5em;
   font-family: monospace;
-  border-radius: 9999px;
   cursor: pointer;
   box-sizing: border-box;
   word-break: break-all;

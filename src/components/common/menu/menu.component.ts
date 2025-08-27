@@ -1,10 +1,4 @@
-import {
-  Component,
-  Subject,
-  Value,
-  type Subscriber,
-  type Subscription
-} from "@craiglington/sapling";
+import { Component, Subject, Value } from "@craiglington/sapling";
 
 import menuTemplate from "./menu.component.html?raw";
 import menuStyles from "./menu.component.css?raw";
@@ -20,9 +14,7 @@ export class MenuComponent extends Component {
   constructor() {
     super({
       template: menuTemplate,
-      styles: [overlayStyles, menuStyles],
-      attachShadowRoot: false,
-      insertSelector: ".menu-dropdown"
+      styles: [overlayStyles, menuStyles]
     });
   }
 
@@ -35,7 +27,7 @@ export class MenuComponent extends Component {
     });
 
     this.menuDropdown =
-      this.getChild<HTMLDivElement>(".menu-dropdown") || undefined;
+      this.getChild<HTMLDivElement>("#menu-dropdown") || undefined;
     if (this.menuDropdown) {
       this._visible.bindElementClass(this.menuDropdown, "show-overlay");
     }
@@ -56,10 +48,6 @@ export class MenuComponent extends Component {
     if (visible && this._target && this.menuDropdown) {
       OverlayService.positionOverlay(this._target, this.menuDropdown);
     }
-  }
-
-  loadingComplete(subscriber: Subscriber<boolean>): Subscription {
-    return this._loadingComplete.subscribe(subscriber);
   }
 }
 

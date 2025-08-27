@@ -28,7 +28,7 @@ export class HeaderComponent extends Component {
     if (menuButton) {
       // Set click listener
       menuButton.addEventListener("click", () => {
-        AppState.dispatch("showNav", (value) => !value);
+        //AppState.dispatch("showNav", (value) => !value);
       });
 
       // Set icon

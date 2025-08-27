@@ -1,33 +1,23 @@
-import { Component, Value } from "@craiglington/sapling";
+import { Component } from "@craiglington/sapling";
 
 import template from "./code-snippet.component.html?raw";
 import styles from "./code-snippet.component.css?raw";
 import { TooltipComponent } from "../tooltip/tooltip.component";
 
 export class CodeSnippetComponent extends Component {
-  private _codeSnippet = new Value("");
-
   constructor() {
     super({
       template: template,
-      styles: [styles],
-      insertSelector: "#code-snippet"
+      styles: [styles]
     });
   }
 
   override async connectedCallback() {
     await super.connectedCallback();
 
-    const codeSnippetElement = this.getChild<HTMLSpanElement>("#code-snippet");
+    const codeSnippetElement = this.getChild<HTMLSlotElement>("#code-snippet");
     const tooltip = this.getChild<TooltipComponent>("#tooltip");
     if (codeSnippetElement) {
-      // Use existing innerText if any
-      if (codeSnippetElement.innerText) {
-        this._codeSnippet.value = codeSnippetElement.innerText;
-      }
-
-      this._codeSnippet.bindElementProperty(codeSnippetElement, "innerText");
-
       if (tooltip) {
         tooltip.target = codeSnippetElement;
       }
@@ -39,7 +29,7 @@ export class CodeSnippetComponent extends Component {
       });
 
       codeSnippetElement.addEventListener("click", () => {
-        navigator.clipboard.writeText(codeSnippetElement.innerHTML).then(() => {
+        navigator.clipboard.writeText(this.codeSnippet).then(() => {
           if (tooltip) {
             tooltip.tooltip = "Copied!";
           }
@@ -49,11 +39,11 @@ export class CodeSnippetComponent extends Component {
   }
 
   get codeSnippet() {
-    return this._codeSnippet.value;
+    return this.innerText;
   }
 
   set codeSnippet(text: string) {
-    this._codeSnippet.value = text;
+    this.innerText = text;
   }
 }
 
