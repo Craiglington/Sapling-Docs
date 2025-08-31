@@ -47,6 +47,5 @@
 
   #side-nav.show-side-nav {
     width: clamp(180px, 75%, 400px);
-    box-shadow: 5px -1px 5px var(--primary-darker);
   }
 }
