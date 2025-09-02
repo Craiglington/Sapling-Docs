@@ -30,18 +30,6 @@ export class HeaderComponent extends Component {
       menuButton.addEventListener("click", () => {
         AppState.dispatch("showNav", (value) => !value);
       });
-
-      // Set icon
-      const icon = menuButton.querySelector<IconComponent>("app-icon");
-      if (icon) {
-        icon.icon = "menu";
-      }
-
-      // Set tooltip
-      const menuTooltip = this.getChild<TooltipComponent>("#menu-tooltip");
-      if (menuTooltip) {
-        menuTooltip.target = menuButton;
-      }
     }
 
     const homeButton = this.getChild<HTMLButtonElement>("#home-button");
@@ -53,29 +41,11 @@ export class HeaderComponent extends Component {
 
       // Set icon
       this.appEmojiIcon.bindElementProperty(homeButton, "innerHTML");
-
-      // Set tooltip
-      const homeTooltip = this.getChild<TooltipComponent>("#home-tooltip");
-      if (homeTooltip) {
-        homeTooltip.target = homeButton;
-      }
     }
 
     const searchButton = this.getChild<HTMLButtonElement>("#search-button");
     if (searchButton) {
       // Set click listener
-
-      // Set icon
-      const icon = searchButton.querySelector<IconComponent>("app-icon");
-      if (icon) {
-        icon.icon = "search";
-      }
-
-      // Set tooltip
-      const searchTooltip = this.getChild<TooltipComponent>("#search-tooltip");
-      if (searchTooltip) {
-        searchTooltip.target = searchButton;
-      }
     }
 
     const themeButton = this.getChild<HTMLButtonElement>("#theme-button");
@@ -98,8 +68,7 @@ export class HeaderComponent extends Component {
       // Set tooltip
       const themeTooltip = this.getChild<TooltipComponent>("#theme-tooltip");
       if (themeTooltip) {
-        themeTooltip.target = themeButton;
-        this.theme.bindElementPropertyWith(themeTooltip, "tooltip", (theme) =>
+        this.theme.bindElementAttribute(themeTooltip, "tooltip", (theme) =>
           theme === "dark" ? "Light Mode" : "Dark Mode"
         );
       }

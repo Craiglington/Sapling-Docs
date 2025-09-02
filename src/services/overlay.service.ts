@@ -1,7 +1,7 @@
 export class OverlayService {
   private static readonly VERTICAL_SPACE = 5;
 
-  public static positionOverlay(target: Element, overlay: HTMLElement) {
+  public static positionFixedOverlay(target: Element, overlay: HTMLElement) {
     const targetPosition = target.getBoundingClientRect();
 
     if (

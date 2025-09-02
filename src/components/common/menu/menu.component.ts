@@ -1,9 +1,8 @@
 import { Component, Subject, Value } from "@craiglington/sapling";
-
-import menuTemplate from "./menu.component.html?raw";
-import menuStyles from "./menu.component.css?raw";
-import overlayStyles from "./../../../styles/overlay.css?raw";
 import { OverlayService } from "../../../services/overlay.service";
+import overlayStyles from "./../../../styles/overlay.css?raw";
+import menuStyles from "./menu.component.css?raw";
+import menuTemplate from "./menu.component.html?raw";
 
 export class MenuComponent extends Component {
   private _target?: HTMLElement;
@@ -46,7 +45,7 @@ export class MenuComponent extends Component {
   set visible(visible: boolean) {
     this._visible.value = visible;
     if (visible && this._target && this.menuDropdown) {
-      OverlayService.positionOverlay(this._target, this.menuDropdown);
+      OverlayService.positionFixedOverlay(this._target, this.menuDropdown);
     }
   }
 }

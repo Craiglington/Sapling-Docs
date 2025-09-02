@@ -1,13 +1,13 @@
 import { Component, Value } from "@craiglington/sapling";
-
-import tooltipTemplate from "./tooltip.component.html?raw";
-import tooltipStyles from "./tooltip.component.css?raw";
-import overlayStyles from "./../../../styles/overlay.css?raw";
 import { OverlayService } from "../../../services/overlay.service";
+import overlayStyles from "./../../../styles/overlay.css?raw";
+import tooltipStyles from "./tooltip.component.css?raw";
+import tooltipTemplate from "./tooltip.component.html?raw";
 
 export class TooltipComponent extends Component {
-  private _target?: HTMLElement;
+  static observedAttributes = ["tooltip"];
   private _visible = new Value(false);
+  private target?: HTMLSlotElement;
   private tooltipElement?: HTMLSlotElement;
 
   constructor() {
@@ -20,31 +20,36 @@ export class TooltipComponent extends Component {
   override async connectedCallback() {
     await super.connectedCallback();
 
-    this._visible.bindElementClass(this, "hidden", (value) => !value);
+    this.target = this.getChild<HTMLSlotElement>("#target") || undefined;
+    this.target?.addEventListener(
+      "mouseenter",
+      this.mouseEnterListener.bind(this)
+    );
+    this.target?.addEventListener(
+      "mouseleave",
+      this.mouseLeaveListener.bind(this)
+    );
 
     this.tooltipElement =
       this.getChild<HTMLSlotElement>("#tooltip") || undefined;
     if (this.tooltipElement) {
+      this._visible.bindElementClass(
+        this.tooltipElement,
+        "hidden",
+        (value) => !value
+      );
       this._visible.bindElementClass(this.tooltipElement, "show-overlay");
+      this.attributeChangedCallback(
+        "tooltip",
+        "",
+        this.getAttribute("tooltip") ?? ""
+      );
     }
   }
 
-  set target(target: HTMLElement | undefined) {
-    if (this._target) {
-      this._target.removeEventListener("mouseenter", this.mouseEnterListener);
-      this._target.removeEventListener("mouseleave", this.mouseLeaveListener);
-    }
-
-    this._target = target;
-    if (this._target) {
-      this._target.addEventListener(
-        "mouseenter",
-        this.mouseEnterListener.bind(this)
-      );
-      this._target.addEventListener(
-        "mouseleave",
-        this.mouseLeaveListener.bind(this)
-      );
+  attributeChangedCallback(attribute: string, _: string, newValue: string) {
+    if (attribute === "tooltip" && this.tooltipElement) {
+      this.tooltipElement.innerText = newValue;
     }
   }
 
@@ -52,18 +57,10 @@ export class TooltipComponent extends Component {
     return this._visible.value;
   }
 
-  get tooltip() {
-    return this.innerText;
-  }
-
-  set tooltip(text: string) {
-    this.innerText = text;
-  }
-
   private mouseEnterListener() {
     this._visible.value = true;
-    if (this._target && this.tooltipElement) {
-      OverlayService.positionOverlay(this._target, this.tooltipElement);
+    if (this.tooltipElement) {
+      OverlayService.positionFixedOverlay(this, this.tooltipElement);
     }
   }
 
