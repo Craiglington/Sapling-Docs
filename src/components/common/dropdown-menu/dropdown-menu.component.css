@@ -1,0 +1,40 @@
+#dropdown-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  outline: none;
+  border: none;
+  background-color: inherit;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 5px;
+  font-size: medium;
+  z-index: 1;
+}
+
+#dropdown-button > app-icon {
+  transition: rotate 300ms ease;
+}
+
+#dropdown-button.visible > app-icon {
+  rotate: 90deg;
+}
+
+#dropdown-menu {
+  width: 100%;
+  max-height: 0px;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-sizing: border-box;
+  padding-left: 1rem;
+  transition:
+    max-height 300ms ease,
+    opacity 300ms ease;
+}
+
+#dropdown-menu.visible {
+  max-height: var(--dropdown-menu-height, 0px);
+  opacity: 1;
+}

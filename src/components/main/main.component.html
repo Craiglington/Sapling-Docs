@@ -1,9 +1,17 @@
 <app-header></app-header>
 <main class="spacer">
   <app-side-nav>
-    <div slot="side-nav">
-      <p>Getting Started</p>
-      <p>Observable</p>
+    <div id="side-nav" slot="side-nav">
+      <app-dropdown-menu
+        dropdown-title="Getting Started"
+        dropdown-height="102px">
+        <p>test one</p>
+        <p>test two</p>
+      </app-dropdown-menu>
+      <app-dropdown-menu dropdown-title="Observables" dropdown-height="200px">
+        <p>test one</p>
+        <p>test two</p>
+      </app-dropdown-menu>
     </div>
     <app-router></app-router>
     <div class="spacer"></div>

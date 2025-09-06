@@ -3,6 +3,7 @@ import "./config/state";
 
 import "./components/common/icon/icon.component";
 import "./components/common/divider/divider.component";
+import "./components/common/dropdown-menu/dropdown-menu.component";
 import "./components/common/menu/menu.component";
 import "./components/common/tooltip/tooltip.component";
 import "./components/common/code-snippet/code-snippet.component";
