@@ -2,13 +2,17 @@
 <main class="spacer">
   <app-side-nav>
     <div id="side-nav" slot="side-nav">
-      <app-dropdown-menu
-        dropdown-title="Getting Started"
-        dropdown-height="102px">
-        <p>test one</p>
-        <p>test two</p>
+      <app-dropdown-menu dropdown-title="Sapling" dropdown-height="102px">
+        <app-dropdown-menu
+          dropdown-title="Getting Started"
+          dropdown-height="100px"></app-dropdown-menu>
+        <app-dropdown-menu dropdown-title="Component"></app-dropdown-menu>
+        <app-dropdown-menu dropdown-title="Reactivity" dropdown-height="100px">
+        </app-dropdown-menu>
       </app-dropdown-menu>
-      <app-dropdown-menu dropdown-title="Observables" dropdown-height="200px">
+      <app-dropdown-menu
+        dropdown-title="Sapling Components"
+        dropdown-height="102px">
         <p>test one</p>
         <p>test two</p>
       </app-dropdown-menu>
