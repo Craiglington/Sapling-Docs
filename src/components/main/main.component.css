@@ -14,14 +14,6 @@ main {
   overflow: auto;
 }
 
-app-side-nav {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  flex-wrap: nowrap;
-}
-
 .dropdown-button {
   width: 100%;
   min-height: 34px;
