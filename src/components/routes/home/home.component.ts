@@ -30,7 +30,7 @@ export class HomeComponent extends Component {
     const getStartedButton = this.getChild<HTMLButtonElement>("#get-started");
     if (getStartedButton) {
       getStartedButton.addEventListener("click", () => {
-        RouterService.route("/docs");
+        RouterService.route("/getting-started");
       });
     }
   }

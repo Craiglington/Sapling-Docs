@@ -6,11 +6,6 @@ import footerStyles from "./footer.component.css?raw";
 
 export class FooterComponent extends Component {
   private appTitle = new Value(`${Constants.TITLE} ${Constants.EMOJI_ICON}`);
-  private appSlogan = new Value(Constants.SLOGAN);
-  private npmURL = new Value(Constants.NPM_URL);
-  private srcURL = new Value(Constants.SOURCE_CODE_URL);
-  private docsURL = new Value(Constants.DOCS_URL);
-  private supportEmail = new Value(Constants.SUPPORT_EMAIL);
 
   constructor() {
     super({
@@ -29,32 +24,28 @@ export class FooterComponent extends Component {
 
     const sloganParagraph = this.getChild<HTMLParagraphElement>("#app-slogan");
     if (sloganParagraph) {
-      this.appSlogan.bindElementProperty(sloganParagraph, "innerText");
+      sloganParagraph.innerText = Constants.SLOGAN;
     }
 
     const npmLink = this.getChild<HTMLAnchorElement>("#npm-link");
     if (npmLink) {
-      this.npmURL.bindElementAttribute(npmLink, "href");
+      npmLink.href = Constants.NPM_URL;
     }
 
     const srcLink = this.getChild<HTMLAnchorElement>("#source-link");
     if (srcLink) {
-      this.srcURL.bindElementAttribute(srcLink, "href");
+      srcLink.href = Constants.SOURCE_CODE_URL;
     }
 
     const docsLink = this.getChild<HTMLAnchorElement>("#documentation-link");
     if (docsLink) {
-      this.docsURL.bindElementAttribute(docsLink, "href");
+      docsLink.href = Constants.DOCUMENTATION_SOURCE_CODE_URL;
     }
 
     const contactLink = this.getChild<HTMLAnchorElement>("#contact-link");
     if (contactLink) {
-      this.supportEmail.bindElementAttribute(
-        contactLink,
-        "href",
-        (value) => `mailto:${value}`
-      );
-      this.supportEmail.bindElementProperty(contactLink, "innerText");
+      contactLink.href = `mailto:${Constants.SUPPORT_EMAIL}`;
+      contactLink.innerText = Constants.SUPPORT_EMAIL;
     }
   }
 }

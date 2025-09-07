@@ -10,6 +10,6 @@ import "./components/common/code-snippet/code-snippet.component";
 import "./components/common/side-nav/side-nav.component";
 import "./components/footer/footer.component";
 import "./components/header/header.component";
-import "./components/routes/docs/docs.component";
+import "./components/routes/sapling/getting-started/getting-started.component";
 import "./components/routes/home/home.component";
 import "./components/main/main.component";
