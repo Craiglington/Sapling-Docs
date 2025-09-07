@@ -21,3 +21,20 @@ app-side-nav {
   align-items: center;
   flex-wrap: nowrap;
 }
+
+.dropdown-button {
+  width: 100%;
+  min-height: 34px;
+  outline: none;
+  border: none;
+  background-color: inherit;
+  box-sizing: border-box;
+  padding: 5px;
+  font-size: medium;
+  text-align: left;
+}
+
+.dropdown-button:hover,
+.dropdown-button:focus {
+  background-color: light-dark(var(--primary-dark), var(--primary-light));
+}

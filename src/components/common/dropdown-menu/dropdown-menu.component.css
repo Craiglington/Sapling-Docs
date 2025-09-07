@@ -1,3 +1,7 @@
+:host {
+  width: 100%;
+}
+
 #dropdown-button {
   display: flex;
   justify-content: space-between;
@@ -9,10 +13,11 @@
   box-sizing: border-box;
   padding: 5px;
   font-size: medium;
-  z-index: 1;
+  text-align: left;
 }
 
-#dropdown-button:hover {
+#dropdown-button:hover,
+#dropdown-button:focus {
   background-color: light-dark(var(--primary-dark), var(--primary-light));
 }
 
@@ -34,12 +39,10 @@
   align-items: flex-start;
   box-sizing: border-box;
   padding-left: 1rem;
-  transition:
-    max-height 300ms ease,
-    opacity 300ms ease;
+  transition: max-height 500ms ease;
 }
 
 #dropdown-menu.visible {
-  max-height: var(--dropdown-menu-height, 0px);
+  max-height: var(--dropdown-menu-height, 500px);
   opacity: 1;
 }

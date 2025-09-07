@@ -3,7 +3,7 @@ import styles from "./dropdown-menu.component.css?raw";
 import template from "./dropdown-menu.component.html?raw";
 
 export class DropdownMenuComponent extends Component {
-  static observedAttributes = ["dropdown-title", "dropdown-height"];
+  static observedAttributes = ["title", "height"];
   private titleElement?: HTMLSpanElement;
   private dropdownMenuElement?: HTMLDivElement;
   private _visible = new Value(false);
@@ -20,7 +20,7 @@ export class DropdownMenuComponent extends Component {
 
     this.titleElement = this.getChild<HTMLSpanElement>("#title") || undefined;
     if (this.titleElement) {
-      this.titleElement.innerText = this.getAttribute("dropdown-title") || "";
+      this.titleElement.innerText = this.getAttribute("title") || "";
     }
 
     const dropdownButton = this.getChild<HTMLButtonElement>("#dropdown-button");
@@ -35,17 +35,22 @@ export class DropdownMenuComponent extends Component {
       this.getChild<HTMLDivElement>("#dropdown-menu") || undefined;
     if (this.dropdownMenuElement) {
       this._visible.bindElementClass(this.dropdownMenuElement, "visible");
+      this._visible.bindElementPropertyWith(
+        this.dropdownMenuElement,
+        "inert",
+        (visible) => !visible
+      );
       this.dropdownMenuElement.style.setProperty(
         "--dropdown-menu-height",
-        this.getAttribute("dropdown-height") || ""
+        this.getAttribute("height") || ""
       );
     }
   }
 
   attributeChangedCallback(attribute: string, _: string, newValue: string) {
-    if (attribute === "dropdown-title" && this.titleElement) {
+    if (attribute === "title" && this.titleElement) {
       this.titleElement.innerText = newValue;
-    } else if (attribute === "dropdown-height" && this.dropdownMenuElement) {
+    } else if (attribute === "height" && this.dropdownMenuElement) {
       this.dropdownMenuElement.style.setProperty(
         "--dropdown-menu-height",
         newValue
