@@ -50,6 +50,9 @@ export class TooltipComponent extends Component {
   attributeChangedCallback(attribute: string, _: string, newValue: string) {
     if (attribute === "tooltip" && this.tooltipElement) {
       this.tooltipElement.innerText = newValue;
+      if (this.visible) {
+        this.mouseEnterListener();
+      }
     }
   }
 
