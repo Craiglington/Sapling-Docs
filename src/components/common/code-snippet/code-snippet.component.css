@@ -1,8 +1,6 @@
 #code-snippet {
   background-color: light-dark(var(--primary-darker), var(--primary-lighter));
   padding: 0.25em 0.5em;
-  font-family: monospace;
   cursor: pointer;
   box-sizing: border-box;
-  word-break: break-all;
 }

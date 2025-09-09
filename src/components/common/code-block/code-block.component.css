@@ -1,0 +1,19 @@
+#code-block {
+  position: relative;
+  background-color: light-dark(var(--primary-darker), var(--primary-lighter));
+  border-radius: var(--border-radius);
+}
+
+#code-block > pre {
+  box-sizing: border-box;
+  padding-right: 44px;
+  padding-left: 1em;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+#copy-tooltip {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
