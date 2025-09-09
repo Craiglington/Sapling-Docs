@@ -4,29 +4,63 @@
     <div id="side-nav" slot="side-nav">
       <!-- SAPLING -->
       <app-dropdown-menu title="Sapling">
-        <button class="dropdown-button">Getting Started</button>
-        <button class="dropdown-button">Component</button>
+        <app-router-link route="/sapling/getting-started">
+          <button class="dropdown-button">Getting Started</button>
+        </app-router-link>
+        <app-router-link route="/sapling/component">
+          <button class="dropdown-button">Component</button>
+        </app-router-link>
         <app-dropdown-menu title="Reactivity">
-          <button class="dropdown-button">Observable</button>
-          <button class="dropdown-button">Subject</button>
-          <button class="dropdown-button">State</button>
-          <button class="dropdown-button">Value</button>
+          <app-router-link route="/sapling/observable">
+            <button class="dropdown-button">Observable</button>
+          </app-router-link>
+          <app-router-link route="/sapling/subject">
+            <button class="dropdown-button">Subject</button>
+          </app-router-link>
+          <app-router-link route="/sapling/state">
+            <button class="dropdown-button">State</button>
+          </app-router-link>
+          <app-router-link route="/sapling/value">
+            <button class="dropdown-button">Value</button>
+          </app-router-link>
         </app-dropdown-menu>
-        <button class="dropdown-button">Router</button>
+        <app-router-link route="/sapling/router">
+          <button class="dropdown-button">Router</button>
+        </app-router-link>
       </app-dropdown-menu>
 
       <!-- SAPLING COMPONENT LIBRARY -->
       <app-dropdown-menu title="Sapling Component Library">
-        <button class="dropdown-button">Getting Started</button>
-        <button class="dropdown-button">Button</button>
-        <button class="dropdown-button">Code Block</button>
-        <button class="dropdown-button">Code Snippet</button>
-        <button class="dropdown-button">Divider</button>
-        <button class="dropdown-button">Dropdown Menu</button>
-        <button class="dropdown-button">Icon</button>
-        <button class="dropdown-button">Menu</button>
-        <button class="dropdown-button">Side Nav</button>
-        <button class="dropdown-button">Tooltip</button>
+        <app-router-link route="/sapling-component-library/getting-started">
+          <button class="dropdown-button">Getting Started</button>
+        </app-router-link>
+        <app-router-link route="/sapling-component-library/button">
+          <button class="dropdown-button">Button</button>
+        </app-router-link>
+        <app-router-link route="/sapling-component-library/code-block">
+          <button class="dropdown-button">Code Block</button>
+        </app-router-link>
+        <app-router-link route="/sapling-component-library/code-snippet">
+          <button class="dropdown-button">Code Snippet</button>
+        </app-router-link>
+        <app-router-link route="/sapling-component-library/divider">
+          <button class="dropdown-button">Divider</button>
+        </app-router-link>
+        <app-router-link route="/sapling-component-library/dropdown-menu">
+          <button class="dropdown-button">Dropdown Menu</button>
+        </app-router-link>
+        <app-router-link route="/sapling-component-library/icon">
+          <button class="dropdown-button">Icon</button>
+        </app-router-link>
+        <app-router-link route="/sapling-component-library/menu">
+          <button class="dropdown-button">Menu</button>
+        </app-router-link>
+        <app-router-link route="/sapling-component-library/side-nav">
+          <button class="dropdown-button">Side Nav</button>
+        </app-router-link>
+        <app-router-link route="/sapling-component-library/tooltip">
+          <button class="dropdown-button">Tooltip</button>
+        </app-router-link>
       </app-dropdown-menu>
     </div>
     <app-router></app-router>

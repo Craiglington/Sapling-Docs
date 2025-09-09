@@ -14,6 +14,15 @@ main {
   overflow: auto;
 }
 
+app-dropdown-menu > app-router-link {
+  width: 100%;
+}
+
+app-dropdown-menu > app-router-link:hover,
+app-dropdown-menu > app-router-link:focus {
+  background-color: light-dark(var(--primary-dark), var(--primary-light));
+}
+
 .dropdown-button {
   width: 100%;
   min-height: 34px;
@@ -24,9 +33,4 @@ main {
   padding: 5px;
   font-size: medium;
   text-align: left;
-}
-
-.dropdown-button:hover,
-.dropdown-button:focus {
-  background-color: light-dark(var(--primary-dark), var(--primary-light));
 }
