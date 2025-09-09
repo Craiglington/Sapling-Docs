@@ -5,5 +5,13 @@
   "quoteProps": "consistent",
   "semi": true,
   "tabWidth": 2,
-  "trailingComma": "none"
+  "trailingComma": "none",
+  "overrides": [
+    {
+      "files": "*.component.html",
+      "options": {
+        "parser": "html"
+      }
+    }
+  ]
 }
