@@ -80,6 +80,11 @@ button {
   padding: 1em;
 }
 
+button:disabled {
+  cursor: default;
+  filter: grayscale(50%) opacity(50%);
+}
+
 .hidden {
   display: none !important;
 }
@@ -97,7 +102,7 @@ button {
   padding: 10px;
 }
 
-.icon-button:hover {
+.icon-button:enabled:hover {
   background-color: light-dark(var(--primary-darkest), var(--primary-light));
 }
 
@@ -108,7 +113,7 @@ button {
   border: solid 1px var(--secondary);
 }
 
-.outlined-button:hover {
+.outlined-button:enabled:hover {
   background-color: light-dark(var(--primary-darker), var(--primary-lighter));
 }
 
@@ -120,7 +125,7 @@ button {
   border: none;
 }
 
-.filled-button:hover {
+.filled-button:enabled:hover {
   background-color: light-dark(
     var(--secondary-lightest),
     var(--secondary-darkest)
