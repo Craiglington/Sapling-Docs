@@ -3,6 +3,7 @@ import { Component, Value } from "@craiglington/sapling";
 import template from "./code-snippet.component.html?raw";
 import styles from "./code-snippet.component.css?raw";
 import { TooltipComponent } from "../tooltip/tooltip.component";
+import { CodeService } from "../../../services/code.service";
 
 export class CodeSnippetComponent extends Component {
   private tooltip = new Value("");
@@ -31,11 +32,13 @@ export class CodeSnippetComponent extends Component {
       });
 
       codeSnippetElement.addEventListener("click", () => {
-        navigator.clipboard.writeText(this.codeSnippet).then(() => {
-          if (tooltipElement) {
-            this.tooltip.value = "Copied!";
-          }
-        });
+        navigator.clipboard
+          .writeText(CodeService.decodeHTML(this.codeSnippet))
+          .then(() => {
+            if (tooltipElement) {
+              this.tooltip.value = "Copied!";
+            }
+          });
       });
     }
   }
