@@ -15,6 +15,7 @@
   left: 0;
   background: var(--primary-darker);
   opacity: 0.5;
+  z-index: 1;
 }
 
 #side-nav {
@@ -29,6 +30,7 @@
   transition:
     left 300ms ease,
     width 300ms ease;
+  z-index: 2;
 }
 
 #side-nav.show-side-nav {
