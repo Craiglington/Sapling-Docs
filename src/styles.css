@@ -37,6 +37,8 @@
   --border-radius: 5px;
 
   --modal-z-index: 100;
+
+  --line-height: 1.5rem;
 }
 
 :root.light {
@@ -59,12 +61,18 @@
   --secondary-darkest: #010508;
 }
 
+html,
 body {
+  height: 100%;
   margin: 0;
+}
+
+body {
   background-color: var(--primary);
   color: var(--secondary);
   font-family: var(--font-family);
   font-weight: var(--font-weight);
+  line-height: var(--line-height);
 }
 
 a {

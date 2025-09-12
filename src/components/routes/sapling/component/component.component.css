@@ -1,7 +1,9 @@
 :host {
-  display: block;
+  display: contents;
+}
+
+#component-component {
   box-sizing: border-box;
   padding: 5px 15px;
   width: 100%;
-  line-height: 1.75em;
 }

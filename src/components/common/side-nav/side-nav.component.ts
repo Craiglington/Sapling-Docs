@@ -1,5 +1,4 @@
 import { Component, Value } from "@craiglington/sapling";
-
 import template from "./side-nav.component.html?raw";
 import styles from "./side-nav.component.css?raw";
 
@@ -16,18 +15,13 @@ export class SideNavComponent extends Component {
   override async connectedCallback() {
     await super.connectedCallback();
 
-    this._showNav.bindElementClass(this, "show-side-nav");
-
-    const sideNavBackground = this.getChild<HTMLDivElement>(
-      "#side-nav-background"
-    );
-    if (sideNavBackground) {
-      this._showNav.bindElementClass(sideNavBackground, "show-side-nav");
+    const sideNavComponent = this.getChild("#side-nav-component");
+    if (sideNavComponent) {
+      this._showNav.bindElementClass(sideNavComponent, "show-side-nav");
     }
 
     const sideNav = this.getChild<HTMLSlotElement>("#side-nav");
     if (sideNav) {
-      this._showNav.bindElementClass(sideNav, "show-side-nav");
       this._showNav.bindElementPropertyWith(
         sideNav,
         "inert",

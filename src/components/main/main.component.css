@@ -1,4 +1,9 @@
 :host {
+  display: contents;
+}
+
+#main-component {
+  height: 100%;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -9,9 +14,8 @@ app-header {
 }
 
 main {
-  width: 100dvw;
-  height: calc(100dvh - 55px);
-  overflow: auto;
+  will-change: scroll-position;
+  overflow-y: auto;
 }
 
 app-dropdown-menu > app-router-link {
@@ -33,4 +37,14 @@ app-dropdown-menu > app-router-link:focus {
   padding: 5px;
   font-size: medium;
   text-align: left;
+}
+
+#side-nav-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
 }
