@@ -1,14 +1,12 @@
-import { Component, Subject, Value } from "@craiglington/sapling";
+import { Component, Value } from "@craiglington/sapling";
 import { OverlayService } from "../../../services/overlay.service";
 import overlayStyles from "./../../../styles/overlay.css?raw";
 import menuStyles from "./menu.component.css?raw";
 import menuTemplate from "./menu.component.html?raw";
 
 export class MenuComponent extends Component {
-  private _target?: HTMLElement;
-  private menuDropdown?: HTMLDivElement;
+  private menu?: HTMLDivElement;
   private _visible = new Value(false);
-  private _loadingComplete = new Subject(false);
 
   constructor() {
     super({
@@ -20,22 +18,32 @@ export class MenuComponent extends Component {
   override async connectedCallback() {
     await super.connectedCallback();
 
-    this._visible.bindElementClass(this, "hidden", (value) => !value);
-    this.addEventListener("click", () => {
-      this._visible.value = false;
-    });
-
-    this.menuDropdown =
-      this.getChild<HTMLDivElement>("#menu-dropdown") || undefined;
-    if (this.menuDropdown) {
-      this._visible.bindElementClass(this.menuDropdown, "show-overlay");
+    const menuBackground = this.getChild<HTMLDivElement>("#menu-background");
+    if (menuBackground) {
+      this._visible.bindElementClass(
+        menuBackground,
+        "hidden",
+        (visible) => !visible
+      );
+      this._visible.bindElementPropertyWith(
+        menuBackground,
+        "inert",
+        (visible) => !visible
+      );
+      menuBackground.addEventListener("click", () => {
+        this.visible = false;
+      });
     }
 
-    this._loadingComplete.emit(true);
-  }
+    this.menu = this.getChild<HTMLDivElement>("#menu") || undefined;
+    if (this.menu) {
+      this._visible.bindElementClass(this.menu, "show-overlay");
+    }
 
-  set target(target: HTMLElement | undefined) {
-    this._target = target;
+    const menuToggle = this.getChild<HTMLSlotElement>("#menu-toggle");
+    menuToggle?.addEventListener("click", () => {
+      this.visible = true;
+    });
   }
 
   get visible() {
@@ -44,8 +52,8 @@ export class MenuComponent extends Component {
 
   set visible(visible: boolean) {
     this._visible.value = visible;
-    if (visible && this._target && this.menuDropdown) {
-      OverlayService.positionFixedOverlay(this._target, this.menuDropdown);
+    if (visible && this.menu) {
+      OverlayService.positionFixedOverlay(this, this.menu);
     }
   }
 }

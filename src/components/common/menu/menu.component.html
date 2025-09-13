@@ -1,1 +1,7 @@
-<div id="menu-dropdown"><slot></slot></div>
+<div id="menu-background">
+  <div id="menu"><slot name="menu"></slot></div>
+</div>
+
+<app-tooltip tooltip="Menu">
+  <slot id="menu-toggle"></slot>
+</app-tooltip>

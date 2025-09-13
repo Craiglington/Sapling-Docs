@@ -1,13 +1,10 @@
-:host {
+#menu-background {
   z-index: var(--modal-z-index);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100dvw;
-  height: 100dvh;
+  position: fixed;
+  inset: 0px;
 }
 
-#menu-dropdown {
+#menu {
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -19,4 +16,8 @@
   box-shadow:
     rgba(0, 0, 0, 0.16) 0px 3px 6px,
     rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+#menu-toggle {
+  cursor: pointer;
 }
