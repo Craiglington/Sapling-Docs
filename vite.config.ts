@@ -1,5 +1,4 @@
 import { defineConfig } from "vite";
-import fs from "fs";
 import checker from "vite-plugin-checker";
 
 export default defineConfig({
@@ -10,14 +9,10 @@ export default defineConfig({
   ],
   publicDir: "assets",
   server: {
-    host: "127.0.0.1",
+    host: "localhost",
     port: 4200,
     strictPort: true,
-    open: false,
-    https: {
-      key: fs.readFileSync("certs/server.key"),
-      cert: fs.readFileSync("certs/server.crt")
-    }
+    open: false
   },
   envDir: "src/envs"
 });

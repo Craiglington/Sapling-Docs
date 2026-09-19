@@ -1,12 +1,10 @@
-import { Component, Value } from "@craiglington/sapling";
+import { Component } from "@craiglington/sapling";
 import { Constants } from "../../../../config/constants";
 
 import template from "./getting-started.component.html?raw";
 import styles from "./getting-started.component.css?raw";
 
 export class GettingStartedComponent extends Component {
-  clientURL = new Value(`https://${import.meta.env.VITE_CLIENT_URL}`);
-
   constructor() {
     super({
       template: template,
