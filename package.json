@@ -4,9 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "start": "vite dev",
+    "build": "vite build",
+    "preview": "npm run build && vite preview",
+    "prettier": "npx prettier . --write",
+    "prettier:check": "npx prettier . --check"
   },
   "devDependencies": {
     "@types/node": "24.13.6",

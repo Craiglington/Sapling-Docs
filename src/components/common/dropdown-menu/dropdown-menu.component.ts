@@ -62,5 +62,3 @@ export class DropdownMenuComponent extends Component {
     return this._visible.value;
   }
 }
-
-window.customElements.define("app-dropdown-menu", DropdownMenuComponent);

@@ -11,5 +11,3 @@ export class DividerComponent extends Component {
     });
   }
 }
-
-window.customElements.define("app-divider", DividerComponent);

@@ -9,7 +9,11 @@ export default defineConfig({
   ],
   publicDir: "assets",
   server: {
-    host: "localhost",
+    port: 4200,
+    strictPort: true,
+    open: false
+  },
+  preview: {
     port: 4200,
     strictPort: true,
     open: false

@@ -1,14 +1,13 @@
 import { Component, RouterService, Value } from "@craiglington/sapling";
-import { Constants } from "../../config/constants";
-import { AppState, type Theme } from "../../config/state";
 import type { IconComponent } from "../common/icon/icon.component";
 import { TooltipComponent } from "../common/tooltip/tooltip.component";
 import headerStyles from "./header.component.css?raw";
 import headerTemplate from "./header.component.html?raw";
+import { StateService, type Theme } from "../../services/state.service";
 
 export class HeaderComponent extends Component {
   theme: Value<Theme> = new Value("dark");
-  appEmojiIcon = new Value(Constants.EMOJI_ICON);
+  appEmojiIcon = new Value("ICON");
 
   constructor() {
     super({
@@ -16,7 +15,7 @@ export class HeaderComponent extends Component {
       styles: [headerStyles]
     });
 
-    AppState.subscribe("theme", (value) => {
+    StateService.subscribe("theme", (value) => {
       this.theme.value = value;
     });
   }
@@ -28,7 +27,7 @@ export class HeaderComponent extends Component {
     if (menuButton) {
       // Set click listener
       menuButton.addEventListener("click", () => {
-        AppState.dispatch("showNav", (value) => !value);
+        StateService.dispatch("showNav", (value) => !value);
       });
     }
 
@@ -52,7 +51,7 @@ export class HeaderComponent extends Component {
     if (themeButton) {
       // Set click listener
       themeButton.addEventListener("click", () => {
-        AppState.dispatch("theme", (theme) =>
+        StateService.dispatch("theme", (theme) =>
           theme === "dark" ? "light" : "dark"
         );
       });
@@ -75,5 +74,3 @@ export class HeaderComponent extends Component {
     }
   }
 }
-
-window.customElements.define("app-header", HeaderComponent);

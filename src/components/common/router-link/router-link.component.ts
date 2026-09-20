@@ -33,5 +33,3 @@ export class RouterLinkComponent extends Component {
     }
   }
 }
-
-window.customElements.define("app-router-link", RouterLinkComponent);

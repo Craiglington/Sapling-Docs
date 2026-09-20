@@ -4,7 +4,7 @@ import template from "./main.component.html?raw";
 import styles from "./main.component.css?raw";
 import { initRouterService } from "../../config/router";
 import type { SideNavComponent } from "../common/side-nav/side-nav.component";
-import { AppState } from "../../config/state";
+import { StateService } from "../../services/state.service";
 
 export class MainComponent extends Component {
   constructor() {
@@ -19,7 +19,7 @@ export class MainComponent extends Component {
 
     const sideNav = this.getChild<SideNavComponent>("app-side-nav");
     if (sideNav) {
-      AppState.subscribe("showNav", (showNav) => {
+      StateService.subscribe("showNav", (showNav) => {
         sideNav.showNav = showNav;
       });
     }
@@ -27,5 +27,3 @@ export class MainComponent extends Component {
     initRouterService();
   }
 }
-
-window.customElements.define("app-main", MainComponent);

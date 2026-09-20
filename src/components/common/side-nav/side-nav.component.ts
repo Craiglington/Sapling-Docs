@@ -34,5 +34,3 @@ export class SideNavComponent extends Component {
     this._showNav.value = show;
   }
 }
-
-window.customElements.define("app-side-nav", SideNavComponent);

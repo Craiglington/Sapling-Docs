@@ -36,5 +36,3 @@ export class CodeBlockComponent extends Component {
     });
   }
 }
-
-window.customElements.define("app-code-block", CodeBlockComponent);

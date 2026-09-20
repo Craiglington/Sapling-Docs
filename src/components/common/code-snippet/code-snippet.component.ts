@@ -51,5 +51,3 @@ export class CodeSnippetComponent extends Component {
     this.innerText = text;
   }
 }
-
-window.customElements.define("app-code-snippet", CodeSnippetComponent);

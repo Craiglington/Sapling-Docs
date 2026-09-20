@@ -71,5 +71,3 @@ export class TooltipComponent extends Component {
     this._visible.value = false;
   }
 }
-
-window.customElements.define("app-tooltip", TooltipComponent);
