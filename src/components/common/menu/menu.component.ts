@@ -57,5 +57,3 @@ export class MenuComponent extends Component {
     }
   }
 }
-
-window.customElements.define("app-menu", MenuComponent);

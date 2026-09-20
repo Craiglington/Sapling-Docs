@@ -51,5 +51,3 @@ export class IconComponent extends Component {
     this._icon.value = icon;
   }
 }
-
-window.customElements.define("app-icon", IconComponent);

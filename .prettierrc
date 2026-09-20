@@ -6,6 +6,7 @@
   "semi": true,
   "tabWidth": 2,
   "trailingComma": "none",
+  "endOfLine": "auto",
   "overrides": [
     {
       "files": "*.component.html",

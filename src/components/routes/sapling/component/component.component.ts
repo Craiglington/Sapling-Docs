@@ -15,5 +15,3 @@ export class ComponentComponent extends Component {
     await super.connectedCallback();
   }
 }
-
-window.customElements.define("app-component", ComponentComponent);

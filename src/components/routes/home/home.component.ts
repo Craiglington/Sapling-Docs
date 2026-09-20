@@ -1,11 +1,11 @@
 import homeTemplate from "./home.component.html?raw";
 import homeStyles from "./home.component.css?raw";
 import { Component, RouterService, Value } from "@craiglington/sapling";
-import { Constants } from "../../../config/constants";
+import { SLOGAN, TITLE } from "../../../constants";
 
 export class HomeComponent extends Component {
-  appTitle = new Value(`${Constants.TITLE} ${Constants.EMOJI_ICON}`);
-  appSlogan = new Value(Constants.SLOGAN);
+  appTitle = new Value(`${TITLE} LOGO`);
+  appSlogan = new Value(SLOGAN);
 
   constructor() {
     super({
@@ -35,5 +35,3 @@ export class HomeComponent extends Component {
     }
   }
 }
-
-window.customElements.define("app-home", HomeComponent);
